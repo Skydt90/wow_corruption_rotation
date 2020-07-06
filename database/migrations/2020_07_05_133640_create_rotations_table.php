@@ -15,9 +15,7 @@ class CreateRotationsTable extends Migration
     {
         Schema::create('rotations', function (Blueprint $table) {
             $table->id();
-            $table->date('start_date');
-            $table->date('end_date');
-            $table->timestamps();
+            $table->string('name', 15);
         });
     }
 
