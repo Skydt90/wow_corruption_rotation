@@ -18,7 +18,8 @@ class CreateCorruptionsTable extends Migration
             $table->string('name', 100);
             $table->string('description');
             $table->string('corr_cost');
-            $table->smallInteger('echo_cost')->nullable();
+            $table->unsignedSmallInteger('echo_cost')->nullable();
+            $table->unsignedMediumInteger('blizz_item_id')->unique();
             $table->string('wowhead_link');
             $table->timestamps();
         });
