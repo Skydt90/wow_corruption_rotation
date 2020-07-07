@@ -4,9 +4,17 @@ use App\Models\Corruption;
 use App\Models\Picture;
 use App\Models\Rotation;
 use Illuminate\Database\Seeder;
+use App\Services\Base\Corruption\CorruptionServiceInterface;
 
 class DatabaseSeeder extends Seeder
 {
+    private $corruptionService;
+
+    public function __construct(CorruptionServiceInterface $corruptionService)
+    {
+        $this->corruptionService = $corruptionService;
+    }
+
     /**
      * Seed the application's database.
      *
@@ -14,6 +22,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {   
+        $this->corruptionService->test();
         $preserved = json_decode(file_get_contents(storage_path() .'/app/corruptions.json'))->corruptions;
         $structure = collect(json_decode(file_get_contents(storage_path(). '/app/corruption-structure.json'))->structure);
         $rotations = json_decode(file_get_contents(storage_path() .'/app/rotations.json'))->rotations;
