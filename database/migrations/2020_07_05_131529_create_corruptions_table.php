@@ -15,6 +15,7 @@ class CreateCorruptionsTable extends Migration
     {
         Schema::create('corruptions', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('rotation_id')->index();
             $table->string('name', 100);
             $table->string('description');
             $table->string('corr_cost');
@@ -22,6 +23,7 @@ class CreateCorruptionsTable extends Migration
             $table->unsignedMediumInteger('blizz_item_id')->unique();
             $table->string('wowhead_link');
             $table->timestamps();
+            $table->foreign('rotation_id')->references('id')->on('rotations');
         });
     }
 

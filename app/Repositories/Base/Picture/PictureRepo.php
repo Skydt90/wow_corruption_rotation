@@ -13,11 +13,11 @@ class PictureRepo extends BaseRepo implements PictureRepoInterface
         $this->model = $model;
     }
     
-    public function createFromFile(object $values) : Model
+    public function createFromFile(object $container) : Model
     {
         return $this->model->firstOrCreate([
-            'path'          => $values->picture_path,
-            'corruption_id' => $values->id,
+            'path'          => $container->picture_path,
+            'corruption_id' => $container->id,
         ]);
     }
 }

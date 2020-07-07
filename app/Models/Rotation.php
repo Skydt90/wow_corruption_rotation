@@ -14,7 +14,7 @@ class Rotation extends Model
 
     public function corruptions()
     {
-        return $this->belongsToMany(Corruption::class, 'corruption_rotations')->withTimestamps();
+        return $this->hasMany(Corruption::class);
     }
 
     public function Schedule()

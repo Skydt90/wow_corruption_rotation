@@ -13,7 +13,7 @@ class Corruption extends Model
 
     public function rotations()
     {
-        return $this->belongsToMany(Rotation::class, 'corruption_rotations')->withTimestamps();
+        return $this->belongsTo(Rotation::class);
     }
 
     public function picture()

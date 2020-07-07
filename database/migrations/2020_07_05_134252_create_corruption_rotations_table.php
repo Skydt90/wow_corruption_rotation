@@ -13,14 +13,14 @@ class CreateCorruptionRotationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('corruption_rotations', function (Blueprint $table) {
+        /* Schema::create('corruption_rotations', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('corruption_id');
             $table->unsignedBigInteger('rotation_id');
             $table->foreign('corruption_id')->references('id')->on('corruptions')->onDelete('cascade');
             $table->foreign('rotation_id')->references('id')->on('rotations')->onDelete('cascade');
             $table->timestamps();
-        });
+        }); */
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateCorruptionRotationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('corruption_rotations');
+        // Schema::dropIfExists('corruption_rotations');
     }
 }

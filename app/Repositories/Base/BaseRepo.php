@@ -21,6 +21,11 @@ class BaseRepo implements BaseRepoInterface
         return $this->model->create($request->all());
     }
 
+    public function firstOrCreate(array $values): Model
+    {
+        return $this->model->firstOrCreate($values);
+    }
+
     public function updateById(Request $request, int $id): Model
     {
         $model = $this->model->findOrFail($id);
@@ -64,9 +69,9 @@ class BaseRepo implements BaseRepoInterface
         return $this->model->paginate($amount);
     }
 
-    public function getWhere(string $column, $value): Collection
+    public function getWhere(string $column, $value): Model
     {
-        return $this->model->all()->where($column, $value)->get();
+        return $this->model->where($column, $value)->first();
     }
 
     public function find(array $values): Collection
