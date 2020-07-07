@@ -46,6 +46,7 @@ class DependencyServiceProvider extends ServiceProvider
             return new CorruptionService(
                 $app->make('App\Repositories\Base\Corruption\CorruptionRepoInterface'),
                 $app->make('App\Repositories\Base\Picture\PictureRepoInterface'),
+                $app->make('App\Repositories\Base\Rotation\RotationRepoInterface')
             );
         });
 

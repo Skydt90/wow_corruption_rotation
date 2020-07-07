@@ -6,5 +6,5 @@ use App\Services\Base\BaseServiceInterface;
 
 interface CorruptionServiceInterface extends BaseServiceInterface
 {
-
+    public function fetchFromFile();
 }
