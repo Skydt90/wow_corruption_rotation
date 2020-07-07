@@ -2,18 +2,39 @@
 
 namespace App\Http\Controllers;
 
+use App\Repositories\Base\Rotation\RotationRepoInterface;
+use App\Services\Base\Corruption\CorruptionServiceInterface;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ScheduleController extends Controller
 {
+    private $corruptionService;
+    private $rotationRepo;
+
+    /**
+     * ScheduleController constructor.
+     *
+     * @param $corruptionService
+     */
+    public function __construct(CorruptionServiceInterface $corruptionService, RotationRepoInterface $rotationRepo)
+    {
+        $this->corruptionService = $corruptionService;
+        $this->rotationRepo = $rotationRepo;
+    }
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Application|Factory|View
      */
     public function index()
     {
-        //
+        return view('schedule.index', [
+            "rotation" => $this->rotationRepo->getByIdWithRelations(1, ['corruptions'])
+        ]);
     }
 
     /**

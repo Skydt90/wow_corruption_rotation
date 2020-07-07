@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\Builder;
 
 class Corruption extends Model
 {
@@ -18,7 +18,16 @@ class Corruption extends Model
 
     public function picture()
     {
-        return $this->belongsTo(Picture::class);
+        return $this->hasOne(Picture::class);
+    }
+
+    // global scope to always return with relationships
+    protected static function boot()
+    {
+        parent::boot();
+        static::addGlobalScope(function (Builder $query) {
+            return $query->with('picture');
+        });
     }
 
 }
