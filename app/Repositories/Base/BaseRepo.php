@@ -54,6 +54,11 @@ class BaseRepo implements BaseRepoInterface
         return $this->model->findOrFail($id);
     }
 
+    public function getOrderBy($column, $value): Model
+    {
+        return $this->model->orderBy($column, $value)->first();
+    }
+
     public function getByIdWithRelations(int $id, array $relations): Model
     {
         return $this->model->with($relations)->findOrFail($id);

@@ -11,6 +11,7 @@ use App\Repositories\Base\Picture\PictureRepo;
 use App\Repositories\Base\Rotation\RotationRepo;
 use App\Repositories\Base\Schedule\ScheduleRepo;
 use App\Services\Base\Corruption\CorruptionService;
+use App\Services\Base\Schedule\ScheduleService;
 use Illuminate\Support\ServiceProvider;
 
 class DependencyServiceProvider extends ServiceProvider
@@ -47,6 +48,14 @@ class DependencyServiceProvider extends ServiceProvider
                 $app->make('App\Repositories\Base\Corruption\CorruptionRepoInterface'),
                 $app->make('App\Repositories\Base\Picture\PictureRepoInterface'),
                 $app->make('App\Repositories\Base\Rotation\RotationRepoInterface')
+            );
+        });
+        // Schedule
+        $this->app->singleton('App\Services\Base\Schedule\ScheduleServiceInterface', function($app) {
+            return new ScheduleService(
+                $app->make('App\Repositories\Base\Schedule\ScheduleRepoInterface'),
+                $app->make('App\Repositories\Base\Rotation\RotationRepoInterface'),
+                $app->make('App\Repositories\Base\Corruption\CorruptionRepoInterface')
             );
         });
 

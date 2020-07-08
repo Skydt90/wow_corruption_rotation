@@ -1,14 +1,17 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Services\Base\Schedule\ScheduleServiceInterface;
 use App\Services\Base\Corruption\CorruptionServiceInterface;
 
 class DatabaseSeeder extends Seeder
 {
+    private $scheduleService;
     private $corruptionService;
 
-    public function __construct(CorruptionServiceInterface $corruptionService)
+    public function __construct(ScheduleServiceInterface $scheduleService, CorruptionServiceInterface $corruptionService)
     {
+        $this->scheduleService   = $scheduleService;
         $this->corruptionService = $corruptionService;
     }
 
@@ -18,9 +21,10 @@ class DatabaseSeeder extends Seeder
      * @return void
      */
     public function run()
-    {   
+    {
         $this->command->getOutput()->writeln('Seeding with base data...');
         $this->call(RotationsTableSeeder::class);
-        $this->corruptionService->fetchFromFile();        
+        $this->corruptionService->fetchFromFile();
+        $this->scheduleService->firstSetup();
     }
 }

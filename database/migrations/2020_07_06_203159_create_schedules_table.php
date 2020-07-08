@@ -17,8 +17,8 @@ class CreateSchedulesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('rotation_id')->index();
             $table->unsignedTinyInteger('max_corruption')->nullable();
-            $table->date('start_date')->nullable();
-            $table->date('end_date')->nullable();
+            $table->dateTime('start_date')->nullable();
+            $table->dateTime('end_date')->nullable();
             $table->foreign('rotation_id')->references('id')->on('rotations')->onDelete('cascade');
         });
     }

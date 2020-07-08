@@ -15,6 +15,8 @@ interface BaseRepoInterface
 
     public function getWhere(string $column, $value): Model;
 
+    public function getOrderBy(string $column, $value): Model;
+
     public function getPaginated(int $amount): LengthAwarePaginator;
 
     public function getByIdWithRelations(int $id, array $relations): Model;

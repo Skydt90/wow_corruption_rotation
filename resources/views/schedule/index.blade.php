@@ -1,41 +1,56 @@
 @extends('layouts.app')
 
 @section('content')
-
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let start = new Date("{{ $start }}");
+            let end = new Date("{{ $end }}");
+            document.getElementById('a-start').innerText = "Start Date: \r\n" + start.toLocaleString(undefined, {timeStyle:"short", dateStyle:"medium"});
+            document.getElementById('a-end').innerText = "End Date: \r\n" + end.toLocaleString(undefined, {timeStyle:"short", dateStyle:"medium"});
+        });
+    </script>
 <div class="container-fluid">
-    <h2 class="text-center text-success">Corruption Vendor</h2>
+    <div class="row">
+        <div class="col-md-5"></div>
+        <div class="col-md-2">
+            <img id="logo" src="{{asset('storage/images/logo.png')}}" class="text-center" alt="">
+        </div>
+        <div class="col-md-5"></div>
+    </div>
     <br>
+    <h1 class="text-center">Corruption Vendor</h1>
+
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
-            <div class="card text-success border-0">
+            <div class="card">
                 <div class="card-header">
-                    <h3 class="text-center">Rotation 1 - Active</h3>
+                    <h3 class="text-center">{{ $schedule->rotation->name }} - Active</h3>
                 </div>
                 <div class="card-body pb-2 pt-2 pl-1 pr-1">
-                    
+
                     <div class="row">
                         <div class="col-md-4">
-                            <p class="pl-1">Start Date: 22-01-2020</p>
+                            <p id="a-start" class="pl-1"></p>
                         </div>
                         <div class="col-md-4 text-center">
-                            <p>End Date: 24-12-2020</p>
+                            <p id="a-end"></p>
                         </div>
                         <div class="col-md-4">
-                            <p class="float-right pr-1">Max Corruption: 125</p>
+                            <p class="float-right text-right pr-1">Max Corruption:<br>{{ $schedule->max_corruption }}</p>
                         </div>
                     </div>
-                    
-                    <table class="table table-sm mb-0 text-success">
+
+                    <table class="table table-sm mb-0">
                         <thead>
                           <tr>
-                            <th style="width: 40%">Item</th>
+                            <th style="width: 45%">Item</th>
                             <th style="width: 33%">Echo Cost</th>
                             <th style="width: 33%" class="text-right">Corruption Cost</th>
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($rotation->corruptions as $corruption)
+                            @foreach ($schedule->rotation->corruptions as $corruption)
                             <tr>
                                 <td>
                                     <a href="{{ $corruption->wowhead_link }}" target="_blank">
@@ -55,7 +70,7 @@
     </div>
     <br><br>
     <div class="row text-success"></div>
-        
+
 </div>
 
 @endsection

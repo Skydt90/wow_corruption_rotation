@@ -2,27 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Repositories\Base\Rotation\RotationRepoInterface;
-use App\Services\Base\Corruption\CorruptionServiceInterface;
-use Illuminate\Contracts\Foundation\Application;
-use Illuminate\Contracts\View\Factory;
-use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Contracts\Foundation\Application;
+use App\Services\Base\Schedule\ScheduleServiceInterface;
+use App\Services\Base\Corruption\CorruptionServiceInterface;
 
 class ScheduleController extends Controller
 {
     private $corruptionService;
+    private $scheduleService;
     private $rotationRepo;
 
     /**
      * ScheduleController constructor.
      *
-     * @param $corruptionService
+     * @param ScheduleServiceInterface $scheduleService
+     * @param CorruptionServiceInterface $corruptionService
      */
-    public function __construct(CorruptionServiceInterface $corruptionService, RotationRepoInterface $rotationRepo)
+    public function __construct(ScheduleServiceInterface $scheduleService, CorruptionServiceInterface $corruptionService)
     {
+        $this->scheduleService = $scheduleService;
         $this->corruptionService = $corruptionService;
-        $this->rotationRepo = $rotationRepo;
     }
 
     /**
@@ -32,8 +34,12 @@ class ScheduleController extends Controller
      */
     public function index()
     {
+        $schedule = $this->scheduleService->getByIdWithRelations(1, ['rotation.corruptions']);
+        //dd($schedule);
         return view('schedule.index', [
-            "rotation" => $this->rotationRepo->getByIdWithRelations(1, ['corruptions'])
+            "schedule" => $schedule,
+            "end" => $schedule->end_date,
+            "start" => $schedule->start_date,
         ]);
     }
 
