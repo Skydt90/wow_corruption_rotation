@@ -1,0 +1,44 @@
+body {
+    color: rgb(228, 168, 2);
+    background-image: url('../storage/images/panel.jpg');
+    background-color: #170e09;
+}
+a {
+    color: rgb(228, 168, 2);
+    text-decoration: none !important;
+}
+a:hover {
+    color: rgb(255, 255, 255);
+}
+img:not(#logo) {
+    height: 20px;
+    width:  auto;
+}
+.card {
+    background-image: url('../storage/images/panel2.jpg');
+    background-color: rgb(30, 32, 58);
+    border: 1.5px solid #170e09;
+    border-radius: 0.5%;
+    transition: transform .3s;
+}
+.card:not(.main) {
+    margin-bottom: 10px;
+}
+.card:not(.main):hover {
+    transform: scale(1.02);
+}
+.card-header {
+    cursor: pointer;
+}
+.table {
+    color: rgb(228, 168, 2);
+}
+.table > thead {
+    /* background-color: rgb(33, 21, 16) */
+}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    border: 0;
+}
+.table > tbody tr:hover {
+    background-color: rgb(33, 21, 16);
+}

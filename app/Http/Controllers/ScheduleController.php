@@ -13,7 +13,6 @@ class ScheduleController extends Controller
 {
     private $corruptionService;
     private $scheduleService;
-    private $rotationRepo;
 
     /**
      * ScheduleController constructor.
@@ -34,12 +33,11 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedule = $this->scheduleService->getByIdWithRelations(1, ['rotation.corruptions']);
-        //dd($schedule);
+        $schedules = $this->scheduleService->getForIndex();
+
         return view('schedule.index', [
-            "schedule" => $schedule,
-            "end" => $schedule->end_date,
-            "start" => $schedule->start_date,
+            "schedule" => $schedules->get('current'),
+            "schedules" => $schedules->get('remaining')
         ]);
     }
 

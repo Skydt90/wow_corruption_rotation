@@ -41,9 +41,15 @@ class Schedule extends Model
     }
 
     // needed to bypass forced format below
-    public function getStartDateClean()
+    public function getStartDateRaw()
     {
         return $this->attributes['start_date'];
+    }
+
+    // needed to bypass forced format below
+    public function getEndDateRaw()
+    {
+        return $this->attributes['end_date'];
     }
 
     public function getStartDateAttribute($start_date)
