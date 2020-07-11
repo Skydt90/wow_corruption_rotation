@@ -6,7 +6,7 @@
             let start = new Date("{{ $schedule->start_date }}");
             let end   = new Date("{{ $schedule->end_date }}");
             let rest  = {!! json_encode($schedules->toArray()) !!};
-            
+
             for (i = 0; i < rest.length; i++) {
                 document.getElementById('future-' + i).innerText = "Start Date: \r\n" + new Date(rest[i].start_date).toLocaleString(undefined, {timeStyle:"short", dateStyle:"medium"});;
                 document.getElementById('future-end-' + i).innerText = "End Date: \r\n" + new Date(rest[i].end_date).toLocaleString(undefined, {timeStyle:"short", dateStyle:"medium"});;
@@ -16,16 +16,16 @@
         });
     </script>
 <div class="container-fluid">
-    <div class="row">
+    {{--<div class="row">
         <div class="col-md-5"></div>
         <div class="col-md-2">
             <img id="logo" src="{{asset('storage/images/logo.png')}}" class="text-center" alt="">
         </div>
         <div class="col-md-5"></div>
-    </div>
+    </div>--}}
     <br>
-    <h2 class="text-center">Corruption Vendor</h2>
-
+    <h1 class="text-center">Corruption Rotation</h1>
+    <br>
     <div class="row">
         <div class="col-md-4"></div>
         <div class="col-md-4">
