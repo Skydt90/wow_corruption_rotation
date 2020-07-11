@@ -16,13 +16,6 @@
         });
     </script>
 <div class="container-fluid">
-    {{--<div class="row">
-        <div class="col-md-5"></div>
-        <div class="col-md-2">
-            <img id="logo" src="{{asset('storage/images/logo.png')}}" class="text-center" alt="">
-        </div>
-        <div class="col-md-5"></div>
-    </div>--}}
     <br>
     <h1 class="text-center">Corruption Rotation</h1>
     <br>

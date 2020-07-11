@@ -2,13 +2,14 @@
 
 namespace App\Services\Base\Schedule;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
+use Illuminate\Database\Eloquent\Model;
+
 use App\Services\Base\BaseService;
 use App\Repositories\Base\Rotation\RotationRepoInterface;
 use App\Repositories\Base\Schedule\ScheduleRepoInterface;
 use App\Repositories\Base\Corruption\CorruptionRepoInterface;
-use Illuminate\Support\Collection;
 
 class ScheduleService extends BaseService implements ScheduleServiceInterface
 {
@@ -56,12 +57,13 @@ class ScheduleService extends BaseService implements ScheduleServiceInterface
     {
         $id       = 1;
         $schedule = $this->createFirstSchedule();
-        $start    = $schedule->getStartDateRaw();
+        $start    = Carbon::createFromFormat('Y-m-d H:i:s', $schedule->getStartDateRaw());
         $max_corr = $schedule->max_corruption;
 
         for ($i = 1; $i <= 50; $i++) {
-            $start    = Carbon::createFromFormat('Y-m-d H:i:s', $start, 'Europe/Copenhagen')->setTimezone('UTC')->addMinutes(5039 + 1);
-            $end      = Carbon::createFromFormat('Y-m-d H:i:s', $start, 'Europe/Copenhagen')->setTimezone('UTC')->addMinutes(5039);
+            $temp     = $start->toDateTimeString();
+            $start    = Carbon::createFromFormat('Y-m-d H:i:s', $temp)->addMinutes(5039 + 1);
+            $end      = Carbon::createFromFormat('Y-m-d H:i:s', $temp)->addMinutes(5039);
             $max_corr !== 125 ? $max_corr += 3 : $max_corr = 125;
             $this->repo->firstOrCreate([
                 'rotation_id'    => $id,

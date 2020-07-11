@@ -36,6 +36,6 @@ class ScheduleRepo extends BaseRepo implements ScheduleRepoInterface
      */
     public function getFutureSchedules(string $current_end): Collection
     {
-        return $this->model->where('start_date', '>', $current_end)->with('rotation.corruptions')->limit(6)->get();
+        return $this->model->where('start_date', '>=', $current_end)->with('rotation.corruptions')->limit(7)->get();
     }
 }
