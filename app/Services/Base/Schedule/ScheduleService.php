@@ -63,6 +63,7 @@ class ScheduleService extends BaseService implements ScheduleServiceInterface
         for ($i = 1; $i <= 50; $i++) {
             $temp     = $start->toDateTimeString();
             $start    = Carbon::createFromFormat('Y-m-d H:i:s', $temp)->addMinutes(5039 + 1);
+            $temp     = $start->toDateTimeString();
             $end      = Carbon::createFromFormat('Y-m-d H:i:s', $temp)->addMinutes(5039);
             $max_corr !== 125 ? $max_corr += 3 : $max_corr = 125;
             $this->repo->firstOrCreate([
