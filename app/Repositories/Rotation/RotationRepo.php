@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Base\Rotation;
+namespace App\Repositories\Rotation;
 
-use App\Repositories\Base\BaseRepo;
+use App\Repositories\BaseRepo;
 
 class RotationRepo extends BaseRepo implements RotationRepoInterface
 {

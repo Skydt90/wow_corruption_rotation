@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Services\Base\Schedule\ScheduleServiceInterface;
-use App\Services\Base\Corruption\CorruptionServiceInterface;
+use App\Services\Schedule\ScheduleServiceInterface;
+use App\Services\Corruption\CorruptionServiceInterface;
 
 class DatabaseSeeder extends Seeder
 {

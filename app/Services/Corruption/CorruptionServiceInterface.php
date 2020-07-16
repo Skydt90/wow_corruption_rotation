@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Base\Corruption;
+namespace App\Services\Corruption;
 
-use App\Services\Base\BaseServiceInterface;
+use App\Services\BaseServiceInterface;
 
 interface CorruptionServiceInterface extends BaseServiceInterface
 {

@@ -19,7 +19,7 @@ class RotationsTableSeeder extends Seeder
      */
     public function run()
     {
-        for($i = 1; $i <= 8; $i++) {
+        for ($i = 1; $i <= 8; $i++) {
             $this->rotationRepo->firstOrCreate(['name' => "Rotation $i"]);
         }
     }

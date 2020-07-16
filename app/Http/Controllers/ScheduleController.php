@@ -6,8 +6,8 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\Foundation\Application;
-use App\Services\Base\Schedule\ScheduleServiceInterface;
-use App\Services\Base\Corruption\CorruptionServiceInterface;
+use App\Services\Schedule\ScheduleServiceInterface;
+use App\Services\Corruption\CorruptionServiceInterface;
 
 class ScheduleController extends Controller
 {

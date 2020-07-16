@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\Base\Schedule;
+namespace App\Services\Schedule;
 
-use App\Services\Base\BaseServiceInterface;
+use App\Services\BaseServiceInterface;
 
 interface ScheduleServiceInterface extends BaseServiceInterface
 {

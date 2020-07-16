@@ -1,15 +1,15 @@
 <?php
 
-namespace App\Services\Base\Schedule;
+namespace App\Services\Schedule;
 
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
 
-use App\Services\Base\BaseService;
-use App\Repositories\Base\Rotation\RotationRepoInterface;
-use App\Repositories\Base\Schedule\ScheduleRepoInterface;
-use App\Repositories\Base\Corruption\CorruptionRepoInterface;
+use App\Services\BaseService;
+use App\Repositories\Rotation\RotationRepoInterface;
+use App\Repositories\Schedule\ScheduleRepoInterface;
+use App\Repositories\Corruption\CorruptionRepoInterface;
 
 class ScheduleService extends BaseService implements ScheduleServiceInterface
 {

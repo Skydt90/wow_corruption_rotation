@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Base\Picture;
+namespace App\Repositories\Picture;
 
-use App\Repositories\Base\BaseRepo;
+use App\Repositories\BaseRepo;
 use Illuminate\Database\Eloquent\Model;
 
 class PictureRepo extends BaseRepo implements PictureRepoInterface
@@ -12,7 +12,7 @@ class PictureRepo extends BaseRepo implements PictureRepoInterface
     {
         $this->model = $model;
     }
-    
+
     public function createFromFile(object $container) : Model
     {
         return $this->model->firstOrCreate([

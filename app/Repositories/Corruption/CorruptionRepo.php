@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Base\Corruption;
+namespace App\Repositories\Corruption;
 
-use App\Repositories\Base\BaseRepo;
+use App\Repositories\BaseRepo;
 use Illuminate\Database\Eloquent\Model;
 
 class CorruptionRepo extends BaseRepo implements CorruptionRepoInterface

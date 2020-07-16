@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Repositories\Base\Schedule;
+namespace App\Repositories\Schedule;
 
-use App\Repositories\Base\BaseRepo;
+use App\Repositories\BaseRepo;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Collection;
 

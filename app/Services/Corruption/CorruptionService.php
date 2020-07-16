@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\Base\Corruption;
+namespace App\Services\Corruption;
 
 use stdClass;
-use App\Services\Base\BaseService;
-use App\Repositories\Base\Picture\PictureRepoInterface;
-use App\Repositories\Base\Rotation\RotationRepoInterface;
-use App\Repositories\Base\Corruption\CorruptionRepoInterface;
+use App\Services\BaseService;
+use App\Repositories\Picture\PictureRepoInterface;
+use App\Repositories\Rotation\RotationRepoInterface;
+use App\Repositories\Corruption\CorruptionRepoInterface;
 
 class CorruptionService extends BaseService implements CorruptionServiceInterface
 {
